@@ -1,6 +1,5 @@
 import pygame
-import os, sys
-import random
+import os
 from PYGAMEVDC import inici
 from tkinter import messagebox
 from tkinter import *
@@ -60,7 +59,7 @@ regras = esc_font.render("REGRAS", True, BR)
 sair = esc_font.render("  SAIR", True, BR)
 
 
-title = pygame.image.load(r"C:\Users\Acer\Documents\UFPB\INTRO. PROG\A_PYGAME\MISO.png")
+title = pygame.image.load(os.path.join('MISO.png'))
 
 
 # DISPLAY
