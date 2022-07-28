@@ -6,23 +6,21 @@ from tkinter import *
 from pygame.locals import *
 
 
-#Começo do programa
-
+# Começo do programa
 pygame.init()
 
-#Cores
-
-AZ = (124, 144, 219)  #Azul
-VM = (158, 43, 37)  #Vermelho
-CREME = (248, 244, 227)
-CIN = (212, 205, 195)  # Cinza
-VD = (36, 187, 68) #Verde
-VCL = (198, 216, 175)  #Verde Claro
-RO = (252, 200, 178)  #Rosa
-PR = (34, 34, 34)  #PRETO
-BR = (250, 250, 250)  #BRANCO
-AM = (252, 246, 176)  #AMARELO
-OR = (254, 127, 45)
+# Cores
+PORTAGE_BLUE = (124, 144, 219)
+RED = (158, 43, 37)
+PROMENADE_GREEN = (248, 244, 227)
+WESTAR_GREY = (212, 205, 195)
+LIME_GREEN = (36, 187, 68)
+PIXIE_GREEN = (198, 216, 175)
+APRICOT_ORANGE = (252, 200, 178)
+BLUE_BELL = (34, 34, 34)
+WHITE = (250, 250, 250)
+BANANA_YELLOW = (252, 246, 176)
+DANDELION_YELLOW = (254, 127, 45)
 
 #Frame e config. da tela
 
@@ -42,9 +40,9 @@ def botao(cor, tam):
 def press(bo, tamanho):
     mouse = pygame.mouse.get_pos()
     if bo.collidepoint(mouse):
-        botao(VM, tamanho)
+        botao(RED, tamanho)
     else:
-        botao(AZ, tamanho)
+        botao(PORTAGE_BLUE, tamanho)
 
 #MENU
 
@@ -53,9 +51,9 @@ b2 = (206, 415, 208, 55)
 b3 = (206, 505, 208, 55)
 esc_font = pygame.font.SysFont('Verdana', 20)
 
-jogo = esc_font.render("INICIAR", True, BR)
-regras = esc_font.render("REGRAS", True, BR)
-sair = esc_font.render("  SAIR", True, BR)
+jogo = esc_font.render("INICIAR", True, WHITE)
+regras = esc_font.render("REGRAS", True, WHITE)
+sair = esc_font.render("  SAIR", True, WHITE)
 
 
 title = pygame.image.load(os.path.join('MISO.png'))
@@ -74,8 +72,8 @@ letras = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 
 
 def popup(A):
     exc = '!' + A
-    excc = escrita_font.render(exc, True, (BR))
-    botao((AZ), (230, 300, 150, 70))
+    excc = escrita_font.render(exc, True, (WHITE))
+    botao(PORTAGE_BLUE, (230, 300, 150, 70))
     DISPLAY.blit(excc, (274, 304) )
     pygame.display.flip()
     pygame.time.delay(1200)
@@ -89,14 +87,14 @@ fim = False
 inic = 1
 
 while not fim:
-    DISPLAY.fill(CREME)
+    DISPLAY.fill(PROMENADE_GREEN)
     DISPLAY.blit(title, (205, 150))
     bb1 = pygame.Rect(b1)
-    botao( AZ, b1)
+    botao(PORTAGE_BLUE, b1)
     bb2 = pygame.Rect(b2)
-    botao( AZ, b2)
+    botao(PORTAGE_BLUE, b2)
     bb3 = pygame.Rect(b3)
-    botao( AZ, b3)
+    botao(PORTAGE_BLUE, b3)
 
     press(bb1, b1)
     press(bb2, b2)

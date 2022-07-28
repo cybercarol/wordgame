@@ -2,19 +2,18 @@ import pygame
 
 palavras = ['abano', 'senso', 'plena', 'vigor', 'ideia', 'poder', 'moral', 'haver', 'fazer', 'sobre', 'anexo', 'casal', 'genro', 'causa']
 
-
-#Cores
-AZ = (124, 144, 219)  #Azul
-VM = (158, 43, 37)  #Vermelho
-CREME = (248, 244, 227)
-CIN = (212, 205, 195)  # Cinza
-VD = (36, 187, 68) #Verde
-VCL = (198, 216, 175)  #Verde Claro
-RO = (252, 200, 178)  #Rosa
-PR = (9, 9, 12)  #PRETO
-BR = (250, 250, 250)  #BRANCO
-AM = (252, 246, 176)  #AMARELO
-OR = (254, 222, 109)
+# Cores
+PORTAGE_BLUE = (124, 144, 219)
+RED = (158, 43, 37)
+PROMENADE_GREEN = (248, 244, 227)
+WESTAR_GREY = (212, 205, 195)
+LIME_GREEN = (36, 187, 68)
+PIXIE_GREEN = (198, 216, 175)
+APRICOT_ORANGE = (252, 200, 178)
+BLUE_BELL = (9, 9, 12)
+WHITE = (250, 250, 250)
+BANANA_YELLOW = (252, 246, 176)
+DANDELION_YELLOW = (254, 222, 109)
 
 d = {'A' :  (66, 628, 35, 35),
      'B' : (104, 628, 34, 35),
@@ -107,24 +106,24 @@ def indo(chute, acerto, cont_inp, nomes, DISPLAY, k):
             existe = 0
 
         if (chute[y] in str(a[y])) and (b[y] == '1'):
-            botao(DISPLAY, VD, nomes[place])
-            botao(DISPLAY, VD, (e))
+            botao(DISPLAY, LIME_GREEN, nomes[place])
+            botao(DISPLAY, LIME_GREEN, (e))
             c[y] = True
 
         elif b[y] == '2':
             print(a, b, cont, cont1)
             c[y] = False
             if cont1[y] == 2 and existe == 1:
-                botao(DISPLAY, OR, nomes[place])
+                botao(DISPLAY, DANDELION_YELLOW, nomes[place])
                 cont1 = [1, 1, 1, 1, 1]
 
             elif (chute[y] in str(a[y])):
-                botao(DISPLAY, OR, nomes[place])
-                botao(DISPLAY, OR, (e))
+                botao(DISPLAY, DANDELION_YELLOW, nomes[place])
+                botao(DISPLAY, DANDELION_YELLOW, (e))
 
 
             elif existe == 0 and (cont[y] == 1) and (cont1[y] > 0):
-                botao(DISPLAY, OR, nomes[place])
+                botao(DISPLAY, DANDELION_YELLOW, nomes[place])
                 cont1[0] = cont1[0] - 1
                 cont1[1] = cont1[1] - 1
                 cont1[2] = cont1[2] - 1
@@ -132,17 +131,17 @@ def indo(chute, acerto, cont_inp, nomes, DISPLAY, k):
                 cont1[4] = cont1[4] - 1
 
             elif (chute[y] not in a):
-                botao(DISPLAY, OR, nomes[place])
-                botao(DISPLAY, OR, (e))
+                botao(DISPLAY, DANDELION_YELLOW, nomes[place])
+                botao(DISPLAY, DANDELION_YELLOW, (e))
 
             else:
-                botao(DISPLAY, VM, nomes[place])
-                botao(DISPLAY, VM, (e))
+                botao(DISPLAY, RED, nomes[place])
+                botao(DISPLAY, RED, (e))
 
         else:
             c[y] = False
-            botao(DISPLAY, VM, nomes[place])
-            botao(DISPLAY, VM, (e))
+            botao(DISPLAY, RED, nomes[place])
+            botao(DISPLAY, RED, (e))
 
 
 
