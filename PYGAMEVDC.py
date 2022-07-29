@@ -4,23 +4,11 @@ from tkinter import messagebox
 from tkinter import *
 from adcpygame import palavras, indo
 from pygame.locals import *
+from utils.colors import *
 
 
 # Começo do programa
 pygame.init()
-
-# Cores
-PORTAGE_BLUE = (124, 144, 219)
-RED = (158, 43, 37)
-PROMENADE_GREEN = (248, 244, 227)
-WESTAR_GREY = (212, 205, 195)
-LIME_GREEN = (36, 187, 68)
-PIXIE_GREEN = (198, 216, 175)
-APRICOT_ORANGE = (252, 200, 178)
-BLUE_BELL = (34, 34, 34)
-WHITE = (250, 250, 250)
-BANANA_YELLOW = (252, 246, 176)
-DANDELION_YELLOW = (254, 127, 45)
 
 #Frame e config. da tela
 

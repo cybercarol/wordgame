@@ -1,19 +1,7 @@
 import pygame
+from utils.colors import *
 
 palavras = ['abano', 'senso', 'plena', 'vigor', 'ideia', 'poder', 'moral', 'haver', 'fazer', 'sobre', 'anexo', 'casal', 'genro', 'causa']
-
-# Cores
-PORTAGE_BLUE = (124, 144, 219)
-RED = (158, 43, 37)
-PROMENADE_GREEN = (248, 244, 227)
-WESTAR_GREY = (212, 205, 195)
-LIME_GREEN = (36, 187, 68)
-PIXIE_GREEN = (198, 216, 175)
-APRICOT_ORANGE = (252, 200, 178)
-BLUE_BELL = (9, 9, 12)
-WHITE = (250, 250, 250)
-BANANA_YELLOW = (252, 246, 176)
-DANDELION_YELLOW = (254, 222, 109)
 
 d = {'A' :  (66, 628, 35, 35),
      'B' : (104, 628, 34, 35),
