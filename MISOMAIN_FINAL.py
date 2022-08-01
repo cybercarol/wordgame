@@ -123,8 +123,7 @@ while not fim:
         if event.type == pygame.MOUSEBUTTONDOWN:
 
             if bb1.collidepoint(event.pos):
-                inic = 0
-                fim = True
+                inici(DISPLAY)
 
             if bb2.collidepoint(event.pos):
                 Tk().wm_withdraw()
@@ -136,10 +135,7 @@ while not fim:
 
     pygame.display.update()
 
-if fim == True and inic == 0:
-    inici(inic, DISPLAY)
-
-elif fim == True and inic == 1:
+if fim == True and inic == 1:
     pygame.quit()
 
 clock.tick(60)

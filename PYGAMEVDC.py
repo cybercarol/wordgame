@@ -64,7 +64,7 @@ def popup(A):
 k = 0
 m = 0
 
-def inici (inic, DISPLAY):
+def inici(DISPLAY):
     #PALAVRA
     palavra = random.choice(palavras)
     acerto = list(palavra.upper())
