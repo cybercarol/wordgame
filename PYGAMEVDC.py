@@ -71,17 +71,9 @@ def inici(DISPLAY):
 
 
     #Input
-
     user_input = ''
-
-    input_box = pygame.Rect(72, 550, 480, 50)
-    color_active = pygame.Color(CIN)
-    color_passive = pygame.Color(VCL)
-    color = color_passive
     text_display = escrita_font.render(user_input, True, (BR))
     active = False
-
-    print('b')
     inici = False
     k = 0
 
@@ -121,53 +113,29 @@ def inici(DISPLAY):
             if col == 4:
                 dim[0] = 82
 
-
-    active = False
-
-
     #INICIO DO JOGO
 
     while not inici:
-        pygame.display.update()
+        input_rect = pygame.Rect(72, 550, 480, 50)
+        color = CIN if active else VCL
+        pygame.draw.rect(DISPLAY, color, input_rect)
+        text_display = escrita_font.render(user_input.upper(), True, BR)
+        DISPLAY.blit(text_display, text_display.get_rect(center=input_rect.center))
 
         for event in pygame.event.get():
             if event.type == QUIT:
                 pygame.quit()
 
-
-
             if event.type == pygame.MOUSEBUTTONDOWN:
-
-                if input_box.collidepoint(event.pos):
-                    active = True
-
-                else:
-                    active = False
+                active = input_rect.collidepoint(event.pos)
 
             if event.type == pygame.KEYDOWN:
-
                 if active == True:
-
                     if event.key == pygame.K_BACKSPACE:
                         user_input = user_input[:-1]
-
                     else:
                         if len(user_input) < 5:
                             user_input += event.unicode
-
-
-            if active:
-                color = color_active
-
-            else:
-                color = color_passive
-
-
-
-            #input box
-            botao(color, input_box)
-            text_display = escrita_font.render(user_input.upper(), True, (BR))
-            DISPLAY.blit(text_display, (input_box.x+150, input_box.y-3))
 
             jnt = ' '.join(letras[:14])
             sep = ' '.join(letras[14:])
@@ -178,10 +146,8 @@ def inici(DISPLAY):
 
 
             if event.type == pygame.KEYDOWN:
-
                 if event.key == pygame.K_RETURN:
                     chute = list(user_input.upper())
-
 
                     #Condições de Fucionamento
                     comeca = 0
@@ -189,11 +155,8 @@ def inici(DISPLAY):
                     if  len(chute) != 5:
                         Tk().wm_withdraw()
                         messagebox.showinfo('Menos de 5 letras','Eita! Digite uma palavra com 5 letras.')
-
                     else:
-
                         for i in range(5):
-
                             if chute[i] in letras:
                                 comeca = comeca +1
 
@@ -239,7 +202,6 @@ def inici(DISPLAY):
 
                 pygame.display.flip()
 
-
         if inici == True:
             DISPLAY = pygame.display.set_mode(MSGF)
             DISPLAY.fill(PR)
@@ -249,6 +211,5 @@ def inici(DISPLAY):
             pygame.display.flip()
             pygame.time.delay(3000)
 
-
-
         clock.tick(60)
+        pygame.display.update()
