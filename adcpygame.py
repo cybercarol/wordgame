@@ -1,5 +1,4 @@
 import pygame
-import threading
 
 palavras = ['abano', 'senso', 'plena', 'vigor', 'ideia', 'poder', 'moral', 'haver', 'fazer', 'sobre', 'anexo', 'casal', 'genro', 'causa']
 
@@ -43,7 +42,7 @@ d = {'A' :  (66, 628, 35, 35),
      'X' : (421, 669, 30, 36),
      'Y' : (454, 669, 29, 36),
      'Z' : (488, 669, 29, 36)
-     
+
 }
 
 
@@ -69,7 +68,7 @@ def indo(chute, acerto, cont_inp, nomes, DISPLAY, k):
         if chute[o] in acerto:
             if chute [o] != acerto[o]:
                 b[o] = '2'
-            
+
             elif chute[o] == acerto[o]:
                 b[o] = '1'
                 a[o] = chute[o]
@@ -86,27 +85,27 @@ def indo(chute, acerto, cont_inp, nomes, DISPLAY, k):
 
             else:
                 a[w] = chute[w]
-                
+
         elif b[w] == '1':
             cont1[w] = 1
-            
+
         else:
             cont1[w] = 0
 
         cont[w] = acerto.count(acerto[w])
-        
 
-    
+
+
     for y in range(5):
         e = (d[chute[y]])
-    
+
         place = cont_inp[y]
         if type(a[y]) == int:
             v = chr(a[y])
             existe = a.count(v)
         else:
             existe = 0
-        
+
         if (chute[y] in str(a[y])) and (b[y] == '1'):
             botao(DISPLAY, VD, nomes[place])
             botao(DISPLAY, VD, (e))
@@ -122,7 +121,7 @@ def indo(chute, acerto, cont_inp, nomes, DISPLAY, k):
             elif (chute[y] in str(a[y])):
                 botao(DISPLAY, OR, nomes[place])
                 botao(DISPLAY, OR, (e))
-                  
+
 
             elif existe == 0 and (cont[y] == 1) and (cont1[y] > 0):
                 botao(DISPLAY, OR, nomes[place])
@@ -135,23 +134,22 @@ def indo(chute, acerto, cont_inp, nomes, DISPLAY, k):
             elif (chute[y] not in a):
                 botao(DISPLAY, OR, nomes[place])
                 botao(DISPLAY, OR, (e))
-                    
+
             else:
                 botao(DISPLAY, VM, nomes[place])
                 botao(DISPLAY, VM, (e))
-        
+
         else:
             c[y] = False
             botao(DISPLAY, VM, nomes[place])
             botao(DISPLAY, VM, (e))
-            
 
-    
+
+
     if c == [True, True, True, True, True]:
         k = 6
         return k
 
-        
+
     print (acerto)
     print(chute)
-
