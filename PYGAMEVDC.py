@@ -74,7 +74,7 @@ def inici(DISPLAY):
 
     user_input = ''
 
-    input_box = pygame.Rect(72, 550, 20, 50)
+    input_box = pygame.Rect(72, 550, 480, 50)
     color_active = pygame.Color(CIN)
     color_passive = pygame.Color(VCL)
     color = color_passive
@@ -168,7 +168,6 @@ def inici(DISPLAY):
             botao(color, input_box)
             text_display = escrita_font.render(user_input.upper(), True, (BR))
             DISPLAY.blit(text_display, (input_box.x+150, input_box.y-3))
-            input_box.w = max(480, 100)
 
             jnt = ' '.join(letras[:14])
             sep = ' '.join(letras[14:])
