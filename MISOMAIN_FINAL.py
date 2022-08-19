@@ -1,6 +1,5 @@
 import pygame
-import os, sys
-import random
+import os
 from PYGAMEVDC import inici
 from tkinter import messagebox
 from tkinter import *
@@ -60,11 +59,10 @@ regras = esc_font.render("REGRAS", True, BR)
 sair = esc_font.render("  SAIR", True, BR)
 
 
-title = pygame.image.load(r"C:\Users\Acer\Documents\UFPB\INTRO. PROG\A_PYGAME\MISO.png")
+title = pygame.image.load(os.path.join('MISO.png'))
 
 
 # DISPLAY
-
 DISPLAY = pygame.display.set_mode(tela)
 pygame.display.set_caption("miso")
 
@@ -92,13 +90,7 @@ fim = False
 inic = 1
 
 while not fim:
-
-    pygame.display.update()
-
-    DISPLAY = pygame.display.set_mode(tela)
     DISPLAY.fill(CREME)
-
-       
     DISPLAY.blit(title, (205, 150))
     bb1 = pygame.Rect(b1)
     botao( AZ, b1)
