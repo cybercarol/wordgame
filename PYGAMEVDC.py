@@ -1,5 +1,4 @@
 import pygame
-import os, sys
 import random
 from tkinter import messagebox
 from tkinter import *
@@ -11,7 +10,7 @@ from pygame.locals import *
 
 pygame.init()
 
-#Cores 
+#Cores
 
 AZ = (124, 144, 219)  #Azul
 VM = (158, 43, 37)  #Vermelho
@@ -36,14 +35,14 @@ tiny_font = pygame.font.SysFont('Bahnschrift', 40)
 
 # DISPLAY
 DISPLAY = pygame.display.set_mode(tela)
-DISPLAY.fill(BR)            
+DISPLAY.fill(BR)
 pygame.display.set_caption("miso")
 
 #Funções
 
 def botao(cor, tam):
     pygame.draw.rect(DISPLAY, cor, tam)
-    
+
 
 #LETRAS
 cont_inp = []
@@ -58,36 +57,28 @@ def popup(A):
     DISPLAY.blit(excc, (178, 304) )
     pygame.display.flip()
     pygame.time.delay(1200)
-    
+
 
 
 #Inicio do game
 k = 0
 m = 0
 
-def inici (inic, DISPLAY):
+def inici(DISPLAY):
     #PALAVRA
     palavra = random.choice(palavras)
     acerto = list(palavra.upper())
 
-    
+
     #Input
-
     user_input = ''
-
-    input_box = pygame.Rect(72, 550, 20, 50)
-    color_active = pygame.Color(CIN)
-    color_passive = pygame.Color(VCL)
-    color = color_passive
     text_display = escrita_font.render(user_input, True, (BR))
     active = False
-    
-    print('b')
     inici = False
     k = 0
 
     #DISPLAY
-    DISPLAY.fill(BR)            
+    DISPLAY.fill(BR)
     pygame.display.set_caption("miso")
 
     quad = [72, 450, 80, 80]
@@ -112,7 +103,7 @@ def inici (inic, DISPLAY):
     for abc in range (5):
         if abc > 0:
             dim[1] = dim[1] + 100
-            
+
         for col in range(5):
             vzs = vzs + 1
             if col > 0:
@@ -122,54 +113,29 @@ def inici (inic, DISPLAY):
             if col == 4:
                 dim[0] = 82
 
-
-    active = False
-
-
     #INICIO DO JOGO
-    
+
     while not inici:
-        pygame.display.update()
-        
+        input_rect = pygame.Rect(72, 550, 480, 50)
+        color = CIN if active else VCL
+        pygame.draw.rect(DISPLAY, color, input_rect)
+        text_display = escrita_font.render(user_input.upper(), True, BR)
+        DISPLAY.blit(text_display, text_display.get_rect(center=input_rect.center))
+
         for event in pygame.event.get():
             if event.type == QUIT:
                 pygame.quit()
-                
 
-    
             if event.type == pygame.MOUSEBUTTONDOWN:
-                
-                if input_box.collidepoint(event.pos):
-                    active = True
-                    
-                else:
-                    active = False
+                active = input_rect.collidepoint(event.pos)
 
             if event.type == pygame.KEYDOWN:
-
                 if active == True:
-
                     if event.key == pygame.K_BACKSPACE:
                         user_input = user_input[:-1]
-
                     else:
                         if len(user_input) < 5:
                             user_input += event.unicode
-
-                        
-            if active:
-                color = color_active
-
-            else:
-                color = color_passive
-
-           
-
-            #input box
-            botao(color, input_box)
-            text_display = escrita_font.render(user_input.upper(), True, (BR))
-            DISPLAY.blit(text_display, (input_box.x+150, input_box.y-3))  
-            input_box.w = max(480, 100)
 
             jnt = ' '.join(letras[:14])
             sep = ' '.join(letras[14:])
@@ -180,22 +146,17 @@ def inici (inic, DISPLAY):
 
 
             if event.type == pygame.KEYDOWN:
-
                 if event.key == pygame.K_RETURN:
                     chute = list(user_input.upper())
 
-                    
                     #Condições de Fucionamento
                     comeca = 0
 
                     if  len(chute) != 5:
                         Tk().wm_withdraw()
                         messagebox.showinfo('Menos de 5 letras','Eita! Digite uma palavra com 5 letras.')
-
                     else:
-                        
                         for i in range(5):
-                            
                             if chute[i] in letras:
                                 comeca = comeca +1
 
@@ -203,7 +164,7 @@ def inici (inic, DISPLAY):
                             Tk().wm_withdraw()
                             messagebox.showinfo('Apenas letras',' Ei! Apenas letras são aceitas. Tente novamente.')
 
-    
+
                     if comeca == 5:
                         k = k + 1
                         vez = [[0, 1, 2, 3, 4], [5, 6, 7, 8, 9], [10, 11, 12, 13, 14], [15, 16, 17, 18, 19], [20, 21, 22, 23, 24]]
@@ -213,34 +174,33 @@ def inici (inic, DISPLAY):
                             k = str(indo(chute, acerto, cont_inp, nomes, DISPLAY, m))
                             k = int(k)
                             print(k)
-                        
-                        
+
+
                         for i in range (5):
                             A = chute[i]
                             letr_input = escrita_font.render(' ' + A.upper(), True, (BR))
                             DISPLAY.blit(letr_input, nomes[cont_inp[i]])
-                            
+
                         pygame.display.flip()
 
                         user_input = user_input[:-5]
-                        
+
                     if k == 5 or k == 6:
                         if k == 5:
                             emj = 'perdeu : ['
                             popup( emj )
-                            
-                            
+
+
                         if k == 6:
                             mj = ' ganhou : )'
-                            popup( mj )            
-                        
+                            popup( mj )
+
                         inici = True
-                        
+
                     else:
                         user_input = user_input[:-5]
 
                 pygame.display.flip()
-
 
         if inici == True:
             DISPLAY = pygame.display.set_mode(MSGF)
@@ -250,35 +210,6 @@ def inici (inic, DISPLAY):
             DISPLAY.blit(eend, (40, 104) )
             pygame.display.flip()
             pygame.time.delay(3000)
-            
 
-        
         clock.tick(60)
-
-    
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        pygame.display.update()

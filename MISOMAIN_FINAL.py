@@ -3,7 +3,6 @@ import os
 from PYGAMEVDC import inici
 from tkinter import messagebox
 from tkinter import *
-from adcpygame import palavras, indo
 from pygame.locals import *
 
 
@@ -11,7 +10,7 @@ from pygame.locals import *
 
 pygame.init()
 
-#Cores 
+#Cores
 
 AZ = (124, 144, 219)  #Azul
 VM = (158, 43, 37)  #Vermelho
@@ -80,7 +79,7 @@ def popup(A):
     DISPLAY.blit(excc, (274, 304) )
     pygame.display.flip()
     pygame.time.delay(1200)
-    
+
 
 
 #Inicio do game
@@ -106,9 +105,9 @@ while not fim:
     DISPLAY.blit(jogo, (270, 340))
     DISPLAY.blit(regras, (268, 430))
     DISPLAY.blit(sair, (270, 520))
-    
-    
-    
+
+
+
     for event in pygame.event.get():
 
         if event.type == QUIT:
@@ -116,52 +115,23 @@ while not fim:
             fim = True
 
         if event.type == pygame.MOUSEBUTTONDOWN:
-            
+
             if bb1.collidepoint(event.pos):
-                inic = 0
-                fim = True
+                inici(DISPLAY)
 
             if bb2.collidepoint(event.pos):
                 Tk().wm_withdraw()
                 messagebox.showinfo('REGRAS','Tente adivinhar a palavra! Chute 5 letras, se acertar a posição e a letra, aparecerá um quadrinho verde. Caso acerte a letra e não a posição, um amarelo, e errando os dois, um vermelho. Você tem 5 chances, boa sorte!')
-                
+
             if bb3.collidepoint(event.pos):
                 inic = 1
                 fim = True
-        
+
     pygame.display.update()
 
-if fim == True and inic == 0:
-    inici(inic, DISPLAY)
-
-elif fim == True and inic == 1:
+if fim == True and inic == 1:
     pygame.quit()
-    
+
 clock.tick(60)
 
 pygame.quit()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
