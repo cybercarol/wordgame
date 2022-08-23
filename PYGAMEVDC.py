@@ -4,25 +4,11 @@ from tkinter import messagebox
 from tkinter import *
 from adcpygame import palavras, indo
 from pygame.locals import *
+from utils.colors import *
 
 
-#Começo do programa
-
+# Começo do programa
 pygame.init()
-
-#Cores
-
-AZ = (124, 144, 219)  #Azul
-VM = (158, 43, 37)  #Vermelho
-CREME = (248, 244, 227)
-CIN = (212, 205, 195)  # Cinza
-VD = (36, 187, 68) #Verde
-VCL = (198, 216, 175)  #Verde Claro
-RO = (252, 200, 178)  #Rosa
-PR = (34, 34, 34)  #PRETO
-BR = (250, 250, 250)  #BRANCO
-AM = (252, 246, 176)  #AMARELO
-OR = (254, 127, 45)
 
 #Frame e config. da tela
 
@@ -35,7 +21,7 @@ tiny_font = pygame.font.SysFont('Bahnschrift', 40)
 
 # DISPLAY
 DISPLAY = pygame.display.set_mode(tela)
-DISPLAY.fill(BR)
+DISPLAY.fill(WHITE)
 pygame.display.set_caption("miso")
 
 #Funções
@@ -52,8 +38,8 @@ letras = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 
 
 def popup(A):
     exc = '!' + A
-    excc = escrita_font.render(exc, True, (BR))
-    botao((AZ), (173, 300, 248, 70))
+    excc = escrita_font.render(exc, True, (WHITE))
+    botao(PORTAGE_BLUE, (173, 300, 248, 70))
     DISPLAY.blit(excc, (178, 304) )
     pygame.display.flip()
     pygame.time.delay(1200)
@@ -72,13 +58,13 @@ def inici(DISPLAY):
 
     #Input
     user_input = ''
-    text_display = escrita_font.render(user_input, True, (BR))
+    text_display = escrita_font.render(user_input, True, (WHITE))
     active = False
     inici = False
     k = 0
 
     #DISPLAY
-    DISPLAY.fill(BR)
+    DISPLAY.fill(WHITE)
     pygame.display.set_caption("miso")
 
     quad = [72, 450, 80, 80]
@@ -88,10 +74,10 @@ def inici(DISPLAY):
             quad[0] = quad[0] + 100
         for coluna in range (4):
             quad[1] = quad[1] - 100
-            botao(VCL, quad)
+            botao(PIXIE_GREEN, quad)
             if coluna == 3:
                 quad[1] = 450
-        botao(RO, quad)
+        botao(APRICOT_ORANGE, quad)
 
     #boxez
 
@@ -117,9 +103,9 @@ def inici(DISPLAY):
 
     while not inici:
         input_rect = pygame.Rect(72, 550, 480, 50)
-        color = CIN if active else VCL
+        color = WESTAR_GREY if active else PIXIE_GREEN
         pygame.draw.rect(DISPLAY, color, input_rect)
-        text_display = escrita_font.render(user_input.upper(), True, BR)
+        text_display = escrita_font.render(user_input.upper(), True, WHITE)
         DISPLAY.blit(text_display, text_display.get_rect(center=input_rect.center))
 
         for event in pygame.event.get():
@@ -139,8 +125,8 @@ def inici(DISPLAY):
 
             jnt = ' '.join(letras[:14])
             sep = ' '.join(letras[14:])
-            letritas = tiny_font.render(jnt, True, (PR))
-            letr1tas = tiny_font.render(sep, True, (PR))
+            letritas = tiny_font.render(jnt, True, (BLUE_BELL))
+            letr1tas = tiny_font.render(sep, True, (BLUE_BELL))
             DISPLAY.blit(letritas, (70, 620))
             DISPLAY.blit(letr1tas, (96, 660))
 
@@ -178,7 +164,7 @@ def inici(DISPLAY):
 
                         for i in range (5):
                             A = chute[i]
-                            letr_input = escrita_font.render(' ' + A.upper(), True, (BR))
+                            letr_input = escrita_font.render(' ' + A.upper(), True, (WHITE))
                             DISPLAY.blit(letr_input, nomes[cont_inp[i]])
 
                         pygame.display.flip()
@@ -204,9 +190,9 @@ def inici(DISPLAY):
 
         if inici == True:
             DISPLAY = pygame.display.set_mode(MSGF)
-            DISPLAY.fill(PR)
+            DISPLAY.fill(BLUE_BELL)
             end = 'FIM DE JOGO !'
-            eend = tiny_font.render(end, True, (BR))
+            eend = tiny_font.render(end, True, (WHITE))
             DISPLAY.blit(eend, (40, 104) )
             pygame.display.flip()
             pygame.time.delay(3000)
